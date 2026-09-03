@@ -1,0 +1,54 @@
+<!doctype html><html><head><meta charset="utf-8">
+<title>Question bank export</title>
+<script src="https://cdn.jsdelivr.net/npm/markdown-it@13.0.2/dist/markdown-it.min.js"></script>
+<script>window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['$$','$$']],macros:{"Tr": "\\operatorname{Tr}", "tr": "\\operatorname{tr}", "Pf": "\\operatorname{Pf}", "Res": "\\operatorname{Res}", "Lim": "\\operatorname{Lim}", "one": "\\mathbb{1}", "der": ["\\frac{\\partial #1}{\\partial #2}", 2], "deri": ["\\left.\\frac{\\partial #1}{\\partial #2}\\right|_{#3}", 3], "mtwo": ["\\left(\\begin{smallmatrix} #1 & #2 \\\\ #3 & #4 \\end{smallmatrix}\\right)", 4], "vtwo": ["\\left(\\begin{smallmatrix} #1 \\\\ #2 \\end{smallmatrix}\\right)", 2], "vthree": ["\\left(\\begin{smallmatrix} #1 \\\\ #2 \\\\ #3 \\end{smallmatrix}\\right)", 3], "Mtwo": ["\\left(\\begin{matrix} #1 & #2 \\\\ #3 & #4 \\end{matrix}\\right)", 4], "Vtwo": ["\\left(\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right)", 2], "Vthree": ["\\left(\\begin{matrix} #1 \\\\ #2 \\\\ #3 \\end{matrix}\\right)", 3], "nnn": "\\mathsf{n}", "ii": "\\mathsf{i}", "mm": "\\mathsf{m}", "Id": "\\mathbb{1}_{\\mathsf n \\times \\mathsf n}", "Idtwo": "\\mathbb{1}_{2\\times 2}", "CA": "\\mathcal{A}", "CB": "\\mathcal{B}", "CD": "\\mathcal{D}", "CE": "\\mathcal{E}", "CF": "\\mathcal{F}", "CG": "\\mathcal{G}", "CH": "\\mathcal{H}", "CI": "\\mathcal{I}", "CJ": "\\mathcal{J}", "CK": "\\mathcal{K}", "CL": "\\mathcal{L}", "CM": "\\mathcal{M}", "CN": "\\mathcal{N}", "CO": "\\mathcal{O}", "CP": "\\mathcal{P}", "CQ": "\\mathcal{Q}", "CR": "\\mathcal{R}", "CS": "\\mathcal{S}", "CT": "\\mathcal{T}", "CU": "\\mathcal{U}", "CV": "\\mathcal{V}", "CW": "\\mathcal{W}", "CY": "\\mathcal{Y}", "CZ": "\\mathcal{Z}", "CC": "\\mathbb{C}", "mathds": "\\mathbb", "e": "\\epsilon", "bm": "\\boldsymbol", "bra": ["\\langle #1 |", 1], "ket": ["| #1 \\rangle", 1], "braket": ["\\langle #1 | #2 \\rangle", 2], "expval": ["\\langle #1 \\rangle", 1], "comm": ["\\left[ #1 , #2 \\right]", 2], "abs": ["\\left| #1 \\right|", 1], "norm": ["\\left\\| #1 \\right\\|", 1]}},options:{skipHtmlTags:['script','noscript','style','textarea','pre']}};</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js" id="MathJax-script"></script>
+<style>
+ body{font-family:Georgia,serif;line-height:1.55;max-width:860px;margin:22px auto;padding:0 18px;color:#22262b}
+ details.qv-sec{margin:6px 0}
+ details.qv-sec>summary{font-family:system-ui,sans-serif;font-weight:600;cursor:pointer;
+   border-bottom:1px solid #dcdfd9;padding:3px 0;list-style:none}
+ details.qv-sec>summary::before{content:"\25B8 ";color:#6b7178}
+ details.qv-sec[open]>summary::before{content:"\25BE "}
+ details.qv-sec[data-d="1"]>summary{font-size:1.15em}
+ details.qv-sec[data-d="2"]>summary{font-size:1.05em}
+ details.qv-sec>div.qv-secbody{padding-left:14px;border-left:2px solid #eef0ec;margin-left:2px}
+ .qv-preamble{background:#e4ede9;border-radius:5px;padding:8px 12px;margin:8px 0 12px;font-size:.95em}
+ .qv-intro{margin:4px 0 8px;font-style:italic}
+ ol.qv-list{padding-left:26px}
+ ol.qv-sublist{padding-left:22px;margin:6px 0}
+ ol.qv-sublist>li{margin:5px 0}
+ .dim{color:#9aa0a6}
+ .qv-q{margin:9px 0}
+ .qv-sol{margin:4px 0 0 2px;font-size:.93em}
+ .qv-sol>summary{cursor:pointer;color:#3d6b64;font-family:system-ui,sans-serif}
+ .qv-answer-d>summary{color:#2f7a4f}
+ .choice-row{display:flex;gap:8px;padding:2px 0}
+ .choice-row.correct{background:#eaf5ee;border-radius:4px}
+ .choice-mark{width:16px;flex-shrink:0}
+ img{max-width:260px;height:auto;background:#fff;border-radius:4px}
+ .qv-footer{margin-top:28px;color:#6b7178;font-size:.85em;font-family:system-ui,sans-serif}
+</style></head><body>
+<details class="qv-sec" data-d="1" open><summary>Ring Theory</summary><div class="qv-secbody"><details class="qv-sec" data-d="2"><summary>Exercises before F2</summary><div class="qv-secbody"><ol class="qv-list"><li class="qv-q"><div class="qv-stmt" data-md="Decide which of the following rings are unital, division rings, or integral domains; find the units in the case of unital rings:
+
+$$\mathbb{C},\ \mathbb{Z},\ \mathbb{Z}_n:=\mathbb{Z}/n\mathbb{Z},\ n\mathbb{Z},\ 2\mathbb{Z}/10\mathbb{Z},\ \mathbb{R}[x],\ \mathbb{R}[[x]]$$"></div></li><li class="qv-q"><div class="qv-stmt" data-md="Direct computations, to check that you are comfortable with the notation."></div><ol class="qv-sublist" type="a"><li class="qv-q" data-qid="groupset1-in-group-ring-where-langle-rangle"><div class="qv-stmt" data-md="In the group ring $\mathbb{Z}C_3$, where $C_3=\langle g\rangle$ and $g^3=1$, compute
+$(1+g)(1+g+g^2)$ and $(1-g)(1+g+g^2)$."></div></li><li class="qv-q" data-qid="groupset1-in-compute-2i-where-bi"><div class="qv-stmt" data-md="In $\mathbb{Z}_3[\phi]$, compute $(2+\phi)(1-2\phi)$, where $\phi$ is a golder ratio. Hint: it solves $\phi^2=\phi+1$."></div></li><li class="qv-q" data-qid="groupset1-in-15-find-multiplicative-inverse-of"><div class="qv-stmt" data-md="In $\mathbb{Z}/15\mathbb{Z}$, find the multiplicative inverse of $\overline{8}$ (if it exists) and of $\overline{7}$ (if it exists)."></div></li><li class="qv-q" data-qid="groupset1-let-compute-overline-cdot-overline-overline"><div class="qv-stmt" data-md="Let $R=\mathbb{Z}/8\mathbb{Z}$. Compute $\overline{2}\cdot\overline{4}$, $\overline{3}^{\,2}$, and $\overline{2}^{\,3}$. Which of $\overline{2},\overline{3},\overline{4}$ are units? Which are nilpotent?"></div></li><li class="qv-q" data-qid="groupset1-decide-whether-each-of-following-subring"><div class="qv-stmt" data-md="Decide whether each of the following is a subring of $\mathbb{Z}$:
+$2\mathbb{Z}$, $\mathbb{Z}^{+}$, $\{0\}$, $6\mathbb{Z}+9\mathbb{Z}$, $\{n\in\mathbb{Z}\mid n\geq 10\}$."></div></li></ol></li><li class="qv-q"><div class="qv-stmt" data-md="Determine whether each of the following statements is true or false. Give a
+short motivation or a counterexample."></div><ol class="qv-sublist" type="a"><li class="qv-q" data-qid="groupset1-rational-numbers-subring-of-real-numbers"><div class="qv-stmt" data-md="The rational numbers $\mathbb{Q}$ are a subring of the real numbers $\mathbb{R}$."></div></li><li class="qv-q" data-qid="groupset1-ring-an-integral-domain"><div class="qv-stmt" data-md="The ring $\mathbb{Z}[x]$ is an integral domain."></div></li><li class="qv-q" data-qid="groupset1-set-of-all-polynomials-in-of"><div class="qv-stmt" data-md="The set of all polynomials in $\mathbb{R}[x]$ of degree at most $3$ is an ideal."></div></li><li class="qv-q" data-qid="groupset1-ring-factorial-unique-factorisation-domain"><div class="qv-stmt" data-md="The ring $\mathbb{Z}/6\mathbb{Z}$ is factorial (i.e. a unique factorisation domain)."></div></li><li class="qv-q" data-qid="groupset1-gaussian-integers-2i-3i-associates-recall"><div class="qv-stmt" data-md="The Gaussian integers $3-2i$ and $2+3i$ are associates. (Recall: $a$ and $b$ are *associates* if there exists a unit $u$ with $a=ub$.)"></div></li></ol></li><li class="qv-q"><div class="qv-stmt" data-md="Let $R_1,R_2$ be rings. As a set, $R_1\times R_2$ is just the Cartesian product of $R_1$ and $R_2$, i.e. $R_1\times R_2=\{(a,b)\mid a\in R_1,\ b\in R_2\}$."></div><ol class="qv-sublist" type="a"><li class="qv-q" data-qid="groupset1-define-addition-multiplication-on-times-making"><div class="qv-stmt" data-md="Define addition and multiplication on $R_1\times R_2$ making it into a ring."></div></li><li class="qv-q" data-qid="groupset1-which-properties-being-commutative-unital-division"><div class="qv-stmt" data-md="Which properties (being commutative, unital, a division ring, an integral domain) of a ring $R$ still hold for $R\times R$?"></div></li></ol></li><li class="qv-q"><div class="qv-stmt" data-md="Simplify $n\mathbb{Z}/m\mathbb{Z}$."></div></li><li class="qv-q"><div class="qv-stmt" data-md="Eisenstein integers are elements of the ring $\mathbb{Z}[\omega]$, $\omega=e^{\frac{2\pi i}{3}}$. Find all units in this ring."></div></li><li class="qv-q"><div class="qv-stmt" data-md="Let $M_{2\times 2}(\mathbb{R})$ be the ring of all real $2\times 2$ matrices."></div><ol class="qv-sublist" type="a"><li class="qv-q" data-qid="groupset1-show-times-not-commutative"><div class="qv-stmt" data-md="Show that $M_{2\times 2}(\mathbb{R})$ is not commutative."></div></li><li class="qv-q" data-qid="groupset1-show-subset-subset-times-consisting-of"><div class="qv-stmt" data-md="Show that the subset $S\subset M_{2\times 2}(\mathbb{R})$ consisting of all matrices of the form
+$$\begin{pmatrix} x &amp; 0 \\ y &amp; x \end{pmatrix},\qquad x,y\in\mathbb{R},$$
+is a subring of $M_{2\times 2}(\mathbb{R})$."></div></li><li class="qv-q" data-qid="groupset1-determine-whether-commutative"><div class="qv-stmt" data-md="Determine whether $S$ is commutative."></div></li></ol></li><li class="qv-q"><div class="qv-stmt" data-md=""></div><ol class="qv-sublist" type="a"><li class="qv-q" data-qid="groupset1-write-down-explicitly-all-elements-of"><div class="qv-stmt" data-md="Write down explicitly all the elements of $\mathbb{Z}_3[\phi]$ (don't resolve $\phi$ to $\frac 12(1+\sqrt{5})$ however)."></div></li><li class="qv-q" data-qid="groupset1-prove-in-fact-field"><div class="qv-stmt" data-md="Prove that this is in fact a field."></div></li></ol></li><li class="qv-q"><div class="qv-stmt" data-md="Show that there exist ring homomorphisms
+$\varphi_1,\varphi_2:\mathbb{Z}[i]\to\mathbb{Z}/101\mathbb{Z}$
+such that $\varphi_1(i)=\overline{10}$ and $\varphi_2(i)=\overline{-10}$."></div></li></ol></div></details></div></details>
+<div class="qv-footer">26 questions — exported from the Question Bank</div>
+<script>
+var md=window.markdownit({html:false,breaks:false});
+var MS=/\$\$[\s\S]*?\$\$|\$(?:\\.|[^$\\])+?\$/g;
+function shield(t,s){return (t||'').replace(MS,function(m){s.push(m);return 'zzmjzz'+(s.length-1)+'zz';});}
+function restore(h,s){return h.replace(/zzmjzz(\d+)zz/g,function(_,i){return s[+i];});}
+function rmd(t,inl){var s=[];var h=shield(t,s);h=inl?md.renderInline(h):md.render(h);return restore(h,s);}
+document.querySelectorAll('[data-md]').forEach(function(el){
+  el.innerHTML=rmd(el.getAttribute('data-md'), el.hasAttribute('data-inline'));
+  el.removeAttribute('data-md');
+});
+</script>
+</body></html>
