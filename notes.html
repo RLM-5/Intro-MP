@@ -1,0 +1,387 @@
+<!doctype html><html><head><meta charset="utf-8">
+<title>Question bank export</title>
+<script src="https://cdn.jsdelivr.net/npm/markdown-it@13.0.2/dist/markdown-it.min.js"></script>
+<script>window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['$$','$$']],macros:{"Pf": "\\operatorname{Pf}", "Lim": "\\operatorname{Lim}", "one": "\\mathbb{1}", "der": ["\\frac{\\partial #1}{\\partial #2}", 2], "deri": ["\\left.\\frac{\\partial #1}{\\partial #2}\\right|_{#3}", 3], "mtwo": ["\\left(\\begin{smallmatrix} #1 & #2 \\\\ #3 & #4 \\end{smallmatrix}\\right)", 4], "vtwo": ["\\left(\\begin{smallmatrix} #1 \\\\ #2 \\end{smallmatrix}\\right)", 2], "vthree": ["\\left(\\begin{smallmatrix} #1 \\\\ #2 \\\\ #3 \\end{smallmatrix}\\right)", 3], "Mtwo": ["\\left(\\begin{matrix} #1 & #2 \\\\ #3 & #4 \\end{matrix}\\right)", 4], "Vtwo": ["\\left(\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right)", 2], "Vthree": ["\\left(\\begin{matrix} #1 \\\\ #2 \\\\ #3 \\end{matrix}\\right)", 3], "nnn": "\\mathsf{n}", "ii": "\\mathsf{i}", "mm": "\\mathsf{m}", "Id": "\\mathbb{1}_{\\mathsf n \\times \\mathsf n}", "Idtwo": "\\mathbb{1}_{2\\times 2}", "CA": "\\mathcal{A}", "CB": "\\mathcal{B}", "CD": "\\mathcal{D}", "CE": "\\mathcal{E}", "CF": "\\mathcal{F}", "CG": "\\mathcal{G}", "CH": "\\mathcal{H}", "CI": "\\mathcal{I}", "CJ": "\\mathcal{J}", "CK": "\\mathcal{K}", "CL": "\\mathcal{L}", "CM": "\\mathcal{M}", "CN": "\\mathcal{N}", "CO": "\\mathcal{O}", "CP": "\\mathcal{P}", "CQ": "\\mathcal{Q}", "CR": "\\mathcal{R}", "CS": "\\mathcal{S}", "CT": "\\mathcal{T}", "CU": "\\mathcal{U}", "CV": "\\mathcal{V}", "CW": "\\mathcal{W}", "CY": "\\mathcal{Y}", "CZ": "\\mathcal{Z}", "CC": "\\mathbb{C}", "mathds": "\\mathbb", "FF": "\\mathbb{F}", "RR": "\\mathbb{R}", "QQ": "\\mathbb{Q}", "ZZ": "\\mathbb{Z}", "algg": "\\mathfrak{g}", "ag": "\\mathfrak{g}", "gl": "\\mathfrak{gl}", "sl": "\\mathfrak{sl}", "su": "\\mathfrak{su}", "au": "\\mathfrak{u}", "psu": "\\mathfrak{psu}", "so": "\\mathfrak{so}", "ao": "\\mathfrak{o}", "sp": "\\mathfrak{sp}", "e": "\\epsilon", "bm": "\\boldsymbol", "vev": ["\\expval{#1}", 1], "omicron": "o", "spup": "\\uparrow", "spdown": "\\downarrow"},tags:'ams'},options:{skipHtmlTags:['script','noscript','style','textarea','pre']}};</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js" id="MathJax-script"></script>
+<style>
+ :root{color-scheme:light}
+ body{font-family:Georgia,serif;line-height:1.55;margin:0;padding:0;color:#22262b;background:#fff}
+ .qvn-shell{display:flex;align-items:flex-start;gap:26px;max-width:1180px;margin:0 auto;padding:18px}
+ .qvn-side{position:sticky;top:14px;flex:0 0 240px;width:240px;max-height:calc(100vh - 28px);
+   overflow:auto;font-family:system-ui,sans-serif;font-size:.88em;border-right:1px solid #e4e7e1;padding-right:12px}
+ .qvn-side-title{font-weight:700;color:#4a5058;text-transform:uppercase;letter-spacing:.04em;
+   font-size:.82em;margin:2px 0 8px}
+ ul.qvn-tree,.qvn-tree ul{list-style:none;margin:0;padding-left:12px}
+ ul.qvn-tree{padding-left:0}
+ .qvn-tree li{margin:2px 0}
+ .qvn-tree a{display:block;color:#33383e;text-decoration:none;padding:2px 5px;border-radius:4px}
+ .qvn-tree a:hover{background:#eef0ec}
+ .qvn-tree a.current{background:#3d6b64;color:#fff}
+ .qvn-tree span.qvn-hdr{display:block;padding:2px 5px;color:#6b7178;font-weight:600}
+ .qvn-main{flex:1 1 auto;min-width:0;max-width:860px}
+ .qvn-crumb{font-family:system-ui,sans-serif;font-size:.8em;color:#8a9088;margin:2px 0 14px;
+   letter-spacing:.01em}
+ .qvn-crumb .qvn-sep{margin:0 3px;color:#c2c7bd}
+ /* Fixed to the viewport bottom (not the document) — position:fixed keeps
+    it out of the normal scroll flow and re-anchors on its own whenever the
+    window is resized, no JS needed for that part. .qvn-main's padding-
+    bottom below keeps the last bit of page content from sitting under it. */
+ .qvn-pager-fixed{position:fixed;left:0;right:0;bottom:0;background:#fff;
+   border-top:1px solid #dcdfd9;padding:8px 18px;z-index:20}
+ .qvn-pager-fixed>.qvn-pager-inner{max-width:860px;margin:0 auto;display:flex;
+   align-items:center;justify-content:space-between;gap:10px;font-family:system-ui,sans-serif}
+ .qvn-pager-fixed a{color:#3d6b64;text-decoration:none;font-weight:600;max-width:38%;
+   overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+ .qvn-pager-fixed a:hover{text-decoration:underline}
+ .qvn-pager-fixed a.qvn-disabled{color:#c2c7bd;pointer-events:none;max-width:38%;
+   overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+ .qvn-pager-fixed .qvn-count{color:#9aa0a6;font-size:.85em;flex:0 0 auto}
+ .qvn-main{padding-bottom:52px}
+ details.qv-sec{margin:6px 0}
+ details.qv-sec>summary{font-family:system-ui,sans-serif;font-weight:600;cursor:pointer;
+   border-bottom:1px solid #dcdfd9;padding:3px 0;list-style:none}
+ details.qv-sec>summary::before{content:"\25B8 ";color:#6b7178}
+ details.qv-sec[open]>summary::before{content:"\25BE "}
+ details.qv-sec[data-d="1"]>summary{font-size:1.15em}
+ details.qv-sec[data-d="2"]>summary{font-size:1.05em}
+ details.qv-sec>div.qv-secbody{padding-left:14px;border-left:2px solid #eef0ec;margin-left:2px}
+ .qv-preamble{background:#e4ede9;border-radius:5px;padding:8px 12px;margin:8px 0 12px;font-size:.95em}
+ .qv-intro{margin:4px 0 8px;font-style:italic}
+ ol.qv-list{padding-left:26px}
+ ol.qv-sublist{list-style:none;counter-reset:qvsub;padding-left:26px;margin:6px 0}
+ ol.qv-sublist>li{margin:5px 0;counter-increment:qvsub;position:relative}
+ ol.qv-sublist>li::before{content:"(" counter(qvsub,lower-alpha) ")";
+   position:absolute;left:-24px;font-family:system-ui,sans-serif;color:#4a5058}
+ .qv-prose{margin:6px 0}
+ .qv-gtext{margin:8px 0}
+ .qv-conclusion{border-top:1px solid #dcdfd9;padding-top:8px;margin-top:12px}
+ .qv-remark{margin:8px 0;padding:2px 0 2px 12px;border-left:3px solid #c9d3cd;color:#4a4a4a;font-size:.95em}
+ .qv-thm{margin:10px 0;padding:1px 0 1px 12px;border-left:3px solid #3d6b64}
+ .qv-thm-definition{border-left-color:#9aa0a6}
+ .qv-thm>:first-child,.qv-proof>:first-child{margin-top:0}
+ .qv-thm>:last-child,.qv-proof>:last-child{margin-bottom:0}
+ .qv-proof{margin:8px 0 12px}
+ .dim{color:#9aa0a6}
+ .qv-appendix{margin-top:56px;padding-top:6px;border-top:2px solid #dcdfd9;break-before:page;page-break-before:always}
+ .qv-ans{margin:14px 0 4px}.qv-ans-sub{margin:6px 0 4px 22px}
+ .qv-ans-n{font-family:system-ui,sans-serif;font-weight:700}
+ .qv-ans-n a{color:inherit;text-decoration:none}
+ .qv-ans-t{font-family:system-ui,sans-serif;font-weight:600;color:#3d6b64;font-size:.9em}
+ .qv-ans-part>div{margin:2px 0 6px}
+ .qv-q{margin:9px 0}
+ .qv-sol{margin:4px 0 0 2px;font-size:.93em}
+ .qv-sol>summary{cursor:pointer;color:#3d6b64;font-family:system-ui,sans-serif}
+ .qv-answer-d>summary{color:#2f7a4f}
+ .choice-row{display:flex;gap:8px;padding:2px 0}
+ .choice-row.correct{background:#eaf5ee;border-radius:4px}
+ .choice-mark{width:16px;flex-shrink:0}
+ img{max-width:260px;height:auto;background:#fff;border-radius:4px;vertical-align:middle}
+ p>img:only-child{display:block;margin:14px auto;width:60%;max-width:100%}
+ a.qref{color:#3d6b64;text-decoration:none;border-bottom:1px solid #cfe0da}
+ a.qref:hover{border-bottom-color:#3d6b64;background:#e4ede9}
+ .qref-broken{color:#b23b3b;border-bottom:1px dotted #b23b3b;cursor:help}
+ :target{background:#fff6d8;border-radius:4px}
+ @media (max-width:760px){
+   .qvn-shell{flex-direction:column;padding:12px}
+   .qvn-side{position:static;width:100%;flex:0 0 auto;max-height:180px;border-right:none;
+     border-bottom:1px solid #e4e7e1;padding-right:0;padding-bottom:10px;margin-bottom:6px}
+ }
+</style></head><body>
+<div class="qvn-shell">
+<nav class="qvn-side"><div class="qvn-side-title">Contents</div><ul class="qvn-tree"><li><span class="qvn-hdr">Ring Theory</span><ul><li><a href="#p1" data-target="p1">Integers</a><ul><li><a href="#p1" data-target="p1">Properties of Integers</a></li><li><a href="#p2" data-target="p2">Euclidean algorithm</a></li><li><a href="#p3" data-target="p3">Prime and irreducible elements</a></li><li><a href="#p4" data-target="p4">Euler $\varphi$-function.</a></li></ul></li></ul></li></ul></nav>
+<main class="qvn-main"><section class="qvn-page" data-page="p1"><div class="qvn-crumb">Ring Theory <span class="qvn-sep">›</span> Integers</div><details class="qv-sec" data-d="1" open id="grp-ringtheory-integers"><summary>Integers</summary><div class="qv-secbody"></div></details><details class="qv-sec" data-d="1" open id="ringtheory-integers-properties"><summary>Properties of Integers</summary><div class="qv-secbody"><div class="qv-gtext" data-md="- well-ordering (every non-empty set of positive integers contains the least element. Obvious, but used in formal proofs)
+- $a$ divides $b$  is denoted as  $a\mid b$ , $a$ does not divide $b$ is denoted as $a\nmid b$.
+- GCD;  LCM
+$$
+\mathrm{GCD}(a,b) * \mathrm{LCM}(a,b) = a b 
+$$
+- Numbers $a$, $b$ are relatively prime a.k.a. coprime if GCD($a$,$b$)=1
+
+- Division with remainder (long division)"></div></div></details></section><section class="qvn-page" data-page="p2" hidden><div class="qvn-crumb">Ring Theory <span class="qvn-sep">›</span> Integers</div><details class="qv-sec" data-d="1" open id="ringtheory-integers-euclidean-algorithm"><summary>Euclidean algorithm</summary><div class="qv-secbody"><div class="qv-gtext" data-md="Standard division of $a$ by $b$ with remainder is
+
+$$
+\begin{equation}
+ a = q\ b+r \,
+\label{eq:divr}
+\end{equation}
+$$
+$q$ is called quotient and $r$ is called remainder. 
+
+Standard (non-extended) Euclidean algorithm is a recursive procedure leading to the computation of GCD: 
+
+- divide with remainder $(a,b)\to (b,r)$
+-  treat $(b,r)$ as new pair $(a',b')$ 
+-  divide with remainder $(a',b')\to (b',r')$
+- treat $(b',r')$ as new pair $(a'',b'')$
+
+...
+
+- repeat until remainder is zero. Then the previous (non-zero) remainder is GCD.
+
+This can be formalised using matrices as follows. Introduce a systematic notation. Start with initial conditions $r_0=a$, $r_1=b$. Then the first division produces remainder $r\equiv r_2$. So we re-write \eqref{eq:divr} as
+
+$$
+r_0=q_1\  r_1+r_2
+$$
+Recursive steps of the algorithm are steps for computing $r_{i+1}$ from $r_{i},r_{i-1}$:
+$$
+\begin{equation}
+r_{i-1}=q_{i}\,r_{i}+r_{i+1}\,,\quad\text{therefore}\quad r_{i+1}=r_{i-1}-q_{i}\,r_{i}\,.
+\label{eq:recursion}
+\end{equation}
+$$
+We can write this recursion as 
+$$
+\begin{pmatrix}
+r_{i}
+\\
+r_{i+1}
+\end{pmatrix}
+=
+\begin{pmatrix}
+0 &amp; 1
+\\
+1 &amp; -q_i
+\end{pmatrix}
+\begin{pmatrix}
+r_{i-1}
+\\
+r_{i}
+\end{pmatrix}
+=A_i \begin{pmatrix}
+r_{i-1}
+\\
+r_{i}
+\end{pmatrix}
+$$
+$q_i$ is uniquely determined by the condition $|r_{i+1}|&lt;|r_i|$ and the condition that we shall impose by hand: $r_i$ is non-negative for $i>1$. 
+
+Since the Euclidean algorithm will terminate, there will be $k$ such that 
+$$
+\begin{pmatrix}
+r_{k}
+\\
+r_{k+1}
+\end{pmatrix}
+=
+\begin{pmatrix}
+g
+\\
+0
+\end{pmatrix}
+$$
+$g$ is the number which turns out to be GCD as shown below.
+
+In summary, we have
+$$
+\begin{pmatrix}
+g
+\\
+0
+\end{pmatrix}
+=M
+\begin{pmatrix}
+a
+\\
+b
+\end{pmatrix}\,,\quad M=A_k\,\ldots A_2\,A_1
+$$
+$$
+g=M_{11}a+M_{12}b
+$$
+This is **Bézout's lemma**:  exist integers $\alpha=M_{11}$ and $\beta=M_{12}$ such that 
+
+$$
+
+g=\alpha\,a+\beta\,b\,.
+$$
+Or we can reformulate it in vector notations:
+
+$$
+\begin{pmatrix}
+\alpha
+\\
+*
+\end{pmatrix}
+=M
+\begin{pmatrix}
+1
+\\
+0
+\end{pmatrix}\,,
+\quad 
+\begin{pmatrix}
+\beta
+\\
+*
+\end{pmatrix}
+=M
+\begin{pmatrix}
+0
+\\
+1
+\end{pmatrix}\,.
+$$
+
+Notice that for computing $g$, we are not obliged to keep track of $q_i$ and we are not obliged to eventually compute $M$, enough to follow the recursion \eqref{eq:recursion}. But computing $\alpha,\beta$ for Bézout's lemma does require remembering $q_i$ for the sake of computing $M$. Thus, computation of $g,\alpha,\beta$ is referred to as *extended Euclidean algorithm*.
+
+Note: $\mathrm{GCD}(\alpha,\beta)=1$, in other words - integers $\alpha,\beta$ are coprime.
+
+Indeed, assume $\alpha,\beta$ are not coprime. Then exists non-unit integer $\upsilon$ such that $\upsilon\mid \alpha,\beta$. Recall that $\alpha=M_{11}$ and $\beta=M_{12}$. Then $\upsilon\mid \det M$. But $\det M=\prod_i \det A_i=(-1)^k$. Thus $\upsilon$ must be a unit.
+
+Now, we note that $a=(M^{-1})_{11}\,g$  and $b=(M^{-1})_{21}\,g$. As $M^{-1}$ is an integer-valued matrix:
+$$
+M^{-1}=(-1)^k\begin{pmatrix}
+M_{22} &amp; -M_{12}
+\\
+-M_{21} &amp; M_{11}
+\end{pmatrix}\,,
+$$
+we get that $g|a$ and $g|b$. On the other hand, since $g=\alpha\,a+\beta\,b$, it follows that any common divisor of $a,b$ is also a divisor of $g$. So $g$ is the greatest common divisor.
+
+The logic applies for any ED (Euclidean domain)."></div></div></details></section><section class="qvn-page" data-page="p3" hidden><div class="qvn-crumb">Ring Theory <span class="qvn-sep">›</span> Integers</div><details class="qv-sec" data-d="1" open id="ringtheory-integers-primes-irreducibles"><summary>Prime and irreducible elements</summary><div class="qv-secbody"><div class="qv-gtext" data-md="- There are two definitions of prime:
+	- (i) A prime number is larger than 1 and has only 1 and itself as its positive divisors.
+	- (ii) $p$ is prime if $p| a b$ implies $p|a$ or $p|b$ for any $a,b$.
+
+For integers, both definitions are equivalent. 
+Proof: 
+
+-> Let $p$ be a prime by the first definition and let $p|ab$. Assume the contrary: $p\nmid a$  and  $p\nmid b$ . Then  $\mathrm{GCD}(p,a)=1$ and $\mathrm{GCD}(p,b)=1$ as $p$ and $1$ are the only divisors of $p$  and $p$ is not a divisor of $a$ or $b$. Then, by Bézout, exists $p_1,q_1$  and $p_2,q_2$ such that $p_1 a+q_1 p=1$ and $p_2 b +q_2 p=1$. Also exists $z$  such that $p z=ab$ . Then
+$$
+1= (p_1a+q_1p)(p_2b+q_2p)=p_1p_2 ab+p(a\,p_1q_2+b\,p_2q_1+p\,q_1q_2)=p(z\,p_1p_2+a\,p_1q_2+b\,p_2q_1+p\,q_1q_2)
+$$
+Which is a contradiction as $p\neq \pm 1$.
+  
+&lt;- Let $p$ be prime by the second definition. Assume there exists $a\neq \pm 1,\pm p$ such that $a|p$ (the case $a=\pm p$ is trivial: then $p/a=\pm1$ is a unit, exactly as irreducibility requires). Then, by the definition of divisibility, exists $b\neq \pm 1$ such that $ab=p$ and then $p|ab$, but $p\nmid a$ and $p\nmid b$ as $|a|&lt;|p|$ and $|b|&lt;|p|$, hence a contradiction. Even without norms: If let say $p\mid a$. Then $a=zp=zab$ and thus $zb=1$ (assuming ID).
+
+We see that &lt;- is elementary while -> was longer, the proof above was using Bézout. 
+
+In general rings:
+
+ $(ii)$ is the definition of a prime:"></div><div class="qv-thm qv-thm-definition" data-md="**Definition.** **Prime** element of a commutative ring is a non-zero and non-unit element $p$ such that $p| a b$ implies $p|a$ or $p|b$ for any $a,b$.
+
+$(i)$ is the definition of irreducible element:"></div><div class="qv-thm qv-thm-definition" data-md="**Definition.** **Irreducible** element of an integral domain (ID) is a non-zero and non-unit element such that only units and the element itself are its divisors.
+
+All primes are irreducible (requires ID, otherwise meaningless)
+
+But irreducible are not always prime. This is however true for PID, in particular for ED (ED is always PID):"></div><div class="qv-thm qv-thm-lemma" data-md="**Lemma (Euclid's lemma, generalisation of).** In principal ideal domain, any irreducible element is prime."></div><div class="qv-proof" data-md="*Proof.* Let $p$ be irreducible and the ring is PID. Let $p|ab$. Then $(p,ab)=(p)$. Now consider the ideal $(p,a)$. In PID, $(p,a)=(x)$ for some $x$. Thus $(p)\subset (x)$ meaning $x|p$, therefore $x$ is either $p$ or a unit since $p$ is irreducible. If $x$ is a unit then $(x)=R=(1)$ (the ideal is the ring itself). If $x=p$ then $(a)\subset (x)=(p)$ which means $p|a$.
+
+Assume that  $p\nmid a,b$. We then must have $(p,a)=(p,b)=(1)$. Now we can repeat the argument as we did by integers: exist $p_1,q_1$  and $p_2,q_2$ such that $p_1 a+q_1 p=1$ and $p_2 b +q_2 p=1$. Also exists $z$  such that $p z=ab$ . Then
+$$
+1= (p_1a+q_1p)(p_2b+q_2p)=p_1p_2 ab+p(a\,p_1q_2+b\,p_2q_1+p\,q_1q_2)=p(z\,p_1p_2+a\,p_1q_2+b\,p_2q_1+p\,q_1q_2)
+$$
+Therefore $p$ is a unit which contradicts the assumption.  ∎"></div></div></details></section><section class="qvn-page" data-page="p4" hidden><div class="qvn-crumb">Ring Theory <span class="qvn-sep">›</span> Integers</div><details class="qv-sec" data-d="1" open id="ringtheory-integers-euler-phi"><summary>Euler $\varphi$-function.</summary><div class="qv-secbody"><div class="qv-gtext" data-md="$\varphi(n)$ is equal to number of positive integers that are coprime with $n$. 
+
+For a prime number $p$,  $\varphi(p)=p-1$. For its power $\varphi(p^k)=p^{k}(1-1/p)$ .
+
+Also $\varphi(ab)=\varphi(a)\varphi(b)$ if $\mathrm{GCD}(a,b)=1$. This is proven using Chinese Reminder Theorem style
+$$
+f:\{0,\ldots ab-1\}\to \{0,\ldots, a-1\}\times \{0,\ldots, b-1\}
+$$
+defined by $f(n)=(n\ \mathrm{mod}\ a,n\ \mathrm{mod}\  b)$ is bijective. And $(ab,x)=1$ iff $1=(a,x)$ and $1=(b,x)$, but $(a,x)=(a,x\ \mathrm{mod}\ a)$ and  $(b,x)=(b,x\ \mathrm{mod}\ b)$ .
+
+Then, by induction,
+$$
+\varphi(n)=n(1-1/p_1)(1-1/p_2)\ldots (1-1/p_k)\,,
+$$
+where $p_i$ are the prime factors of $n$.
+
+This can be also seen explicitly from the combinatorics of the definition: $\varphi(n)$ is all numbers minus multiples of $p_i$ plus multiples of $p_ip_j$, $i&lt;j$  (plus is because of overcounting) minus multiples of $p_ip_jp_k$, $i&lt;j&lt;k$  *etc*."></div></div></details></section></main>
+</div>
+<nav class="qvn-pager-fixed"><div class="qvn-pager-inner">
+<a class="qvn-prev" id="qvn-pager-prev">‹ Previous</a>
+<span class="qvn-count" id="qvn-pager-count"></span>
+<a class="qvn-next" id="qvn-pager-next">Next ›</a>
+</div></nav>
+<script>
+var md=window.markdownit({html:false,breaks:false});
+// markdown-it's default validateLink allowlists only data:image/(gif|png|jpeg|webp) -
+// every bank figure is an SVG, so a bare data:image/svg+xml URI from _img_data_uri()
+// is silently rejected at parse time (the image never becomes an <img> tag at all) unless
+// this is relaxed. Safe here: these URIs are generated server-side from the bank's own
+// local files, not from untrusted input, and an <img>-rendered SVG can't execute scripts.
+md.validateLink=function(){return true;};
+var MS=/\$\$[\s\S]*?\$\$|\$(?:\\.|[^$\\])+?\$/g;
+function esc(t){return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function shield(t,s){return (t||'').replace(MS,function(m){s.push(esc(m));return 'zzmjzz'+(s.length-1)+'zz';});}
+function restore(h,s){return h.replace(/zzmjzz(\d+)zz/g,function(_,i){return s[+i];});}
+function imgAttrs(h){return h.replace(/(<img\b[^>]*?)\s*\/?>(\s*)\{([^}]*)\}/g,function(m,o,ws,a){var st='';var mw=/width\s*=\s*("[^"]*"|'[^']*'|\S+)/.exec(a);var mh=/height\s*=\s*("[^"]*"|'[^']*'|\S+)/.exec(a);var mal=/align\s*=\s*("[^"]*"|'[^']*'|\S+)/.exec(a);function unq(x){return x.replace(/^["']|["']$/g,'');}function px(x){x=unq(x);return /[%a-z]$/i.test(x)?x:x+'px';}if(mw)st+='width:'+px(mw[1])+';max-width:none;';if(mh)st+='height:'+px(mh[1])+';';if(mal){var al=unq(mal[1]).toLowerCase();if(al==='left'||al==='right'){st+='float:'+al+';margin:4px '+(al==='left'?'16px 8px 0':'0 8px 16px')+';';if(!mw)st+='max-width:50%;';}else if(al==='center'){st+='display:block;margin:14px auto;float:none;';}else if(al==='inline'){st+='display:inline;max-width:260px;width:auto;height:auto;margin:0 4px;float:none;';}}return st?o+' style="'+st+'">':o+'>';});}
+var REFS={"grp-qbank-ring-theory": {"href": "#grp-qbank-ring-theory", "text": "Ring Theory"}, "grp-ringtheory-integers": {"href": "#grp-ringtheory-integers", "text": "Integers"}, "ringtheory-integers-properties": {"href": "#ringtheory-integers-properties", "text": "Properties of Integers"}, "ringtheory-integers-euclidean-algorithm": {"href": "#ringtheory-integers-euclidean-algorithm", "text": "Euclidean algorithm"}, "ringtheory-integers-primes-irreducibles": {"href": "#ringtheory-integers-primes-irreducibles", "text": "Prime and irreducible elements"}, "ringtheory-integers-euler-phi": {"href": "#ringtheory-integers-euler-phi", "text": "Euler \\varphi-function."}};
+function wiki(h){return h.replace(/(<(?:code|pre)\b[\s\S]*?<\/(?:code|pre)>)|(\[\[[^\]]*?\]\])/g,function(m,c,wl){
+  if(c)return c;
+  return wl.replace(/\[\[\s*([^\]|]+?)\s*(?:\|\s*([^\]]*?)\s*)?\]\]/g,function(mm,tg,al){
+    tg=tg.trim();var r=REFS[tg];var txt=esc((al&&al.trim())?al.trim():(r?r.text:tg));
+    return r?('<a class="qref" href="'+esc(r.href)+'">'+txt+'</a>')
+            :('<span class="qref qref-broken" title="unresolved: '+esc(tg)+'">'+txt+'</span>');
+  });
+});}
+function rmd(t,inl){var s=[];var h=shield(t,s);h=inl?md.renderInline(h):md.render(h);return restore(wiki(imgAttrs(h)),s);}
+document.querySelectorAll('[data-md]').forEach(function(el){
+  el.innerHTML=rmd(el.getAttribute('data-md'), el.hasAttribute('data-inline'));
+  el.removeAttribute('data-md');
+});
+// Pagination: each page is a hidden/shown <section data-page>, not a
+// separate file, so the whole export stays one self-contained document.
+// NODE_PAGE maps every id/key reachable from ANY page (branches, questions,
+// [[wiki-link]] targets) to the id of the page that contains it.
+var PAGE_IDS=["p1", "p2", "p3", "p4"], PAGE_LABELS={"p1": "Properties of Integers", "p2": "Euclidean algorithm", "p3": "Prime and irreducible elements", "p4": "Euler $\\varphi$-function."}, NODE_PAGE={"grp-ringtheory-integers": "p1", "ringtheory-integers-properties": "p1", "ringtheory-integers-euclidean-algorithm": "p2", "ringtheory-integers-primes-irreducibles": "p3", "ringtheory-integers-euler-phi": "p4"};
+// One Previous/Next bar, fixed to the viewport bottom (CSS `position:fixed`
+// — see .qvn-pager-fixed) rather than one baked into each page's own
+// scrolling content, so it never moves as a long page scrolls and never
+// needs repositioning on window resize. showPage() just re-points its two
+// links at whichever pages are now the neighbours.
+function updatePager(pid){
+  var idx=PAGE_IDS.indexOf(pid);
+  var prevA=document.getElementById('qvn-pager-prev'), nextA=document.getElementById('qvn-pager-next');
+  document.getElementById('qvn-pager-count').textContent=(idx+1)+' / '+PAGE_IDS.length;
+  if(idx>0){
+    var pv=PAGE_IDS[idx-1];
+    prevA.href='#'+pv; prevA.textContent='‹ '+(PAGE_LABELS[pv]||'Previous'); prevA.classList.remove('qvn-disabled');
+  } else {
+    prevA.removeAttribute('href'); prevA.textContent='‹ Previous'; prevA.classList.add('qvn-disabled');
+  }
+  if(idx>=0 && idx<PAGE_IDS.length-1){
+    var nx=PAGE_IDS[idx+1];
+    nextA.href='#'+nx; nextA.textContent=(PAGE_LABELS[nx]||'Next')+' ›'; nextA.classList.remove('qvn-disabled');
+  } else {
+    nextA.removeAttribute('href'); nextA.textContent='Next ›'; nextA.classList.add('qvn-disabled');
+  }
+}
+function showPage(pid){
+  document.querySelectorAll('.qvn-page').forEach(function(s){s.hidden=(s.getAttribute('data-page')!==pid);});
+  document.querySelectorAll('.qvn-side a[data-target]').forEach(function(a){
+    a.classList.toggle('current', a.getAttribute('data-target')===pid);
+  });
+  updatePager(pid);
+}
+function route(){
+  var frag=decodeURIComponent(location.hash.slice(1));
+  if(!frag){ showPage(PAGE_IDS[0]); window.scrollTo(0,0); return; }
+  var el=document.getElementById(frag);
+  // NODE_PAGE only knows the ids _paginate() baked ahead of time (branch /
+  // question / [[wiki-link]] targets). A `\eqref{}` link is MathJax's own
+  // anchor (id="mjx-eqn:..."), created client-side once MathJax typesets —
+  // never in NODE_PAGE. Resolve those (and anything else id-based MathJax
+  // or a future feature might add) by walking up from the live element to
+  // its containing page instead of only trusting the baked map.
+  var pid = PAGE_IDS.indexOf(frag)!==-1 ? frag : NODE_PAGE[frag];
+  if(!pid && el){
+    var sec=el.closest('.qvn-page');
+    if(sec) pid=sec.getAttribute('data-page');
+  }
+  if(!pid){ showPage(PAGE_IDS[0]); window.scrollTo(0,0); return; }
+  showPage(pid);
+  if(pid===frag){ window.scrollTo(0,0); return; }
+  if(el){
+    var t=el; while(t){ if(t.tagName==='DETAILS') t.open=true; t=t.parentElement; }
+    el.scrollIntoView({block:'start'});
+  }
+}
+window.addEventListener('hashchange', route);
+route();
+// A \eqref target (MathJax's own "mjx-eqn:..." anchor) doesn't exist in the
+// DOM until MathJax's async typeset finishes, so a hash that names one on
+// first load (frag not yet found above) needs one more pass once it's done.
+if(window.MathJax && MathJax.startup && MathJax.startup.promise){ MathJax.startup.promise.then(route); }
+</script>
+</body></html>
